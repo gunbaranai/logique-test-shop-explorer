@@ -1,8 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import logo from '../logo.svg'
+import { ProductsPage } from './products'
 
 export const Route = createFileRoute('/')({
-  component: App,
+  component: ProductsPage,
 })
 
 function App() {
