@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
 import { getProduct } from '@/lib/api'
+import { useCart } from '@/lib/useCart'
 
 export const Route = createFileRoute('/products/$productId')({
   component: ProductDetail,
@@ -8,7 +9,8 @@ export const Route = createFileRoute('/products/$productId')({
 
 function ProductDetail() {
   const { productId } = Route.useParams()
-  
+  const { addItem } = useCart()
+
   const { data: product, isLoading, error } = useQuery({
     queryKey: ['product', productId],
     queryFn: () => getProduct(Number(productId)),
@@ -22,8 +24,8 @@ function ProductDetail() {
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img 
-            src={product.images[0]} 
+          <img
+            src={product.images[0]}
             alt={product.title}
             className="w-full h-96 object-cover"
           />
@@ -40,7 +42,7 @@ function ProductDetail() {
             </div>
             <div className="grid grid-cols-4 gap-2">
               {product.images.map((image, index) => (
-                <img 
+                <img
                   key={index}
                   src={image}
                   alt={`${product.title} ${index + 1}`}
@@ -48,6 +50,14 @@ function ProductDetail() {
                 />
               ))}
             </div>
+          </div>
+          <div className="p-4">
+            <button
+              onClick={() => addItem(product)}
+              className="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>

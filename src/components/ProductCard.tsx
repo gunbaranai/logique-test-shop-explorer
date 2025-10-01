@@ -1,3 +1,4 @@
+import { useCart } from '@/lib/useCart'
 import type { Product } from '@/types/product'
 import { Link } from '@tanstack/react-router'
 
@@ -6,6 +7,8 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  const { addItem } = useCart()
+
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <img 
@@ -26,6 +29,14 @@ export function ProductCard({ product }: ProductCardProps) {
             View Details
           </Link>
         </div>
+      </div>
+      <div className="p-4">
+        <button
+          onClick={() => addItem(product)}
+          className="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
   )

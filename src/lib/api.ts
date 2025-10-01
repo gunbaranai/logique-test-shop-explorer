@@ -1,4 +1,4 @@
-import type { Category, Product, ProductsResponse } from "@/types/product"
+import type { Category, Product } from "@/types/product"
 
 const API_URL = 'https://api.escuelajs.co/api/v1'
 

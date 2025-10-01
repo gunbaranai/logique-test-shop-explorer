@@ -25,3 +25,8 @@ export interface Category {
     creationAt: string,
     updatedAt: string
 }
+
+export interface CartItem {
+  product: Product
+  quantity: number
+}

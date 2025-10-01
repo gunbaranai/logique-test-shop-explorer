@@ -9,6 +9,13 @@ bun install
 bun --bun run start
 ```
 
+# Developer Note - Approach and Decisions
+
+- This is my first project of using TanStack Router and Query (with optimistic updates), so I used a lot of AI assistance to help me get started.
+- I've only used Bun for a while but it has become my go-to runtime for new projects. It's fast and has a great developer experience.
+- I used the file-based routing approach for TanStack Router as it seemed like the easiest way to get started.
+- I used an old project of mine as a focal reference point for the majority of components and functions to help me bootstrap the project faster.
+
 # Building For Production
 
 To build this application for production:

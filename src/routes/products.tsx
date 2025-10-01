@@ -19,10 +19,10 @@ export function ProductsPage() {
 
   const filteredProducts = useMemo(() => {
     if (!products) return []
-    
+
     return products.filter(product => {
       const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase())
-      
+
       const matchesCategory = selectedCategory === 'all' || product.category.id.toString() === selectedCategory
 
       return matchesSearch && matchesCategory
@@ -35,8 +35,10 @@ export function ProductsPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Products</h1>
-      
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold">Products</h1>
+      </div>
+
       <div className="mb-6 flex flex-col md:flex-row gap-4">
         <div className="flex-1">
           <input
@@ -47,7 +49,7 @@ export function ProductsPage() {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-        
+
         <div className="w-full md:w-48">
           <select
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
